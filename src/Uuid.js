@@ -13,13 +13,21 @@ define(["Byte"], function (Byte) {
             for (var i = 0; i < 128; i++) {
                 bin.push(Math.round(Math.random()));
             }
-            var string = "";
+            // Create 16 Byte objects from the 128 random bits
             for (var i = 0; i < 128; i = i + 8) {
-                var values = bin.slice(i, i + 8);
-                var b = new Byte(values);
-                bytes.push(b);
-
+                bytes.push(new Byte(bin.slice(i, i + 8)));
             }
+            // To put in the version, take the 7th byte and perform an and operation using 0x0f, 
+            // followed by an or operation with 0x40. 
+            var seventhByte = bytes[6];
+            seventhByte.doAndOperation([0, 0, 0, 0, 1, 1, 1, 1]);
+            seventhByte.doOrOperation([0, 1, 0, 0, 0, 0, 0, 0]);
+            // To put in the variant, take the 9th byte and perform an and operation using 0x3f, 
+            // followed by an or operation with 0x80.
+            var ninthByte = bytes[8];
+            ninthByte.doAndOperation([0, 0, 1, 1, 1, 1, 1, 1]);
+            ninthByte.doOrOperation([1, 0, 0, 0, 0, 0, 0, 0]);
+
             return bytes[0].hexString + bytes[1].hexString + bytes[2].hexString + bytes[3].hexString + "-" +
                 bytes[4].hexString + bytes[5].hexString + "-" + bytes[6].hexString + bytes[7].hexString + "-" +
                 bytes[8].hexString + bytes[9].hexString + "-" + bytes[10].hexString + bytes[11].hexString +
