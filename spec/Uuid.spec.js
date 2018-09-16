@@ -1,20 +1,23 @@
 // jscs:disable
 // jshint ignore:start
 define([
-    "Uuid"
-], function (Uuid) {
+    "Uuid",
+    "Performance"
+], function (Uuid, Performance) {
+    Performance.configure({
+        measurementUnit: Performance.measurementUnit.MILLISECOND
+    });
     describe('Uuid.spec.js', function () {
         describe("Uuid", function () {
             it("generates a uuid", function () {
                 //var id = Uuid._create();
-                var i, id;
+                var i, id, regex = new RegExp(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
                 for (i = 0; i < 1000; i++) {
+                    Performance.startMeasurement();
                     id = Uuid.generate();
-                    expect(typeof id === "string").toBe(true);
-                    expect(id.length).toEqual(36);
-                    console.log(id);
+                    Performance.stopMeasurement();
+                    expect(regex.test(id)).toBe(true);
                 }
-
             });
         });
         describe("Byte", function () {

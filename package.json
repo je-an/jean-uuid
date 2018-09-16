@@ -1,12 +1,12 @@
 {
   "name": "jean-uuid",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Provides functionality for creation of uuids",
   "main": "dist/jean-uuid.js",
   "scripts": {
     "test": "open spec/spec-runner.html in browser"
   },
-  "keywords": [],
+  "keywords": ["guid", "uuid"],
   "author": "Jeremias Andris",
   "license": "MIT",
   "dependencies": {
@@ -17,5 +17,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/je-an/jean-uuid.git"
+  },
+  "devDependencies": {
+    "jean-performance": "^1.0.2"
   }
 }

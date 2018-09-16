@@ -13,6 +13,9 @@ define([
                     get: function () {
                         return bits;
                     },
+                    set: function (value) {
+                        bits = TypeCheck.isArrayTypeOf(value, "number") ? value : Failure.throwTypeError("value is not an number array");
+                    }
                 },
                 binaryString: {
                     get: function () {
@@ -31,14 +34,6 @@ define([
                     }
                 }
             });
-        };
-        /** @param {String} hex - the hex value */
-        Byte.fromHex = function (hex) {
-
-        };
-        /** */
-        Byte.fromDezimal = function () {
-
         };
         /** */
         Byte.prototype.getBinaryString = function () {
@@ -62,7 +57,7 @@ define([
             if (!TypeCheck.isArrayTypeOf(bits, "number") || !bits.length === 8) {
                 Failure.throwTypeError("bits is not an number array or its length is not 8");
             }
-            for (i = 0; i < 8; i++) { 
+            for (i = 0; i < 8; i++) {
                 this.bits[i] = this.bits[i] & bits[i];
             }
         };
@@ -72,7 +67,7 @@ define([
             if (!TypeCheck.isArrayTypeOf(bits, "number") || !bits.length === 8) {
                 Failure.throwTypeError("bits is not an number array or its length is not 8");
             }
-            for (i = 0; i < 8; i++) { 
+            for (i = 0; i < 8; i++) {
                 this.bits[i] = this.bits[i] | bits[i];
             }
         };

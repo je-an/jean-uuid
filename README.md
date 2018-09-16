@@ -1,6 +1,7 @@
 ## Description
 
 Provides functionality for creation of uuids
+Implemented by instructions of https://www.famkruithof.net/guid-uuid-random.html
 
 ## Support
 Supports both CommonJS and AMD eco system. If there is no loader, Uuid is registered as a browser variable.
@@ -8,7 +9,9 @@ Supports both CommonJS and AMD eco system. If there is no loader, Uuid is regist
 ## Code Example
 - Use it as browser variable
 ```js
-var obj = new Uuid();
+// Generates an uuid formatted like:
+// 00000000-0000-0000-0000-000000000000
+var uuid = Uuid.generate();
 ```
 - Use it with require.js
 ```js
@@ -26,7 +29,12 @@ var Uuid = require("jean-uuid");
 
 ## API Reference
 
-TBD
+### Uuid.generate() 
+
+Generates a uuid
+
+**Returns**
+- `String` -  The generated uuid
 
 ## Tests
 
