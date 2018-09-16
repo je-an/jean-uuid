@@ -1,6 +1,6 @@
 {
   "name": "jean-uuid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Provides functionality for creation of uuids",
   "main": "dist/jean-uuid.js",
   "scripts": {
