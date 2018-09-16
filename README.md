@@ -1,6 +1,6 @@
 ## Description
 
-Provides functionality for creation of uuids
+Provides functionality for creation of uuids. <br>
 Implemented by instructions of https://www.famkruithof.net/guid-uuid-random.html
 
 ## Support

@@ -388,7 +388,7 @@ define('Byte',[
                 }
             });
         };
-        /** */
+        /** @returns {String} - the binary value as string */
         Byte.prototype.getBinaryString = function () {
             var i = 0, bits = this.bits, length = bits.length, result = [];
             for (i = 0; i < length; i++) {
@@ -396,7 +396,7 @@ define('Byte',[
             }
             return result.join("");
         };
-        /** */
+        /** @returns {String} - the hex value as string */
         Byte.prototype.getHexString = function () {
             var hexString = parseInt(this.binaryString, 2).toString(16);
             if (hexString.length < 2) {
@@ -407,7 +407,7 @@ define('Byte',[
         /** @param {Number[]} bits - the bits for the and operation  */
         Byte.prototype.doAndOperation = function (bits) {
             var i;
-            if (!TypeCheck.isArrayTypeOf(bits, "number") || !bits.length === 8) {
+            if (!TypeCheck.isArrayTypeOf(bits, "number") || bits.length !== 8) {
                 Failure.throwTypeError("bits is not an number array or its length is not 8");
             }
             for (i = 0; i < 8; i++) {
@@ -417,7 +417,7 @@ define('Byte',[
         /** @param {Number[]} bits - the bits for the or operation  */
         Byte.prototype.doOrOperation = function (bits) {
             var i;
-            if (!TypeCheck.isArrayTypeOf(bits, "number") || !bits.length === 8) {
+            if (!TypeCheck.isArrayTypeOf(bits, "number") || bits.length !== 8) {
                 Failure.throwTypeError("bits is not an number array or its length is not 8");
             }
             for (i = 0; i < 8; i++) {
