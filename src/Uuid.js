@@ -26,7 +26,7 @@ define(["Byte"], function (Byte) {
             var ninthByte = bytes[8];
             ninthByte.doAndOperation([0, 0, 1, 1, 1, 1, 1, 1]);
             ninthByte.doOrOperation([1, 0, 0, 0, 0, 0, 0, 0]);
-            // Create the uuid string 
+            // Create the uuid string
             return bytes[0].hexString + bytes[1].hexString + bytes[2].hexString + bytes[3].hexString + "-" +
                 bytes[4].hexString + bytes[5].hexString + "-" + bytes[6].hexString + bytes[7].hexString + "-" +
                 bytes[8].hexString + bytes[9].hexString + "-" + bytes[10].hexString + bytes[11].hexString +
