@@ -7,7 +7,7 @@ define(["Byte"], function (Byte) {
         Byte: Byte,
         /** @returns {String} - the generated uuid */
         generate: function () {
-            var binaryValues = [], bytes = [], i;
+            var binaryValues = [], bytes = [], i, seventhByte, ninthByte;
             //Create 128 random bits
             for (i = 0; i < 128; i++) {
                 binaryValues.push(Math.round(Math.random()));
@@ -18,12 +18,12 @@ define(["Byte"], function (Byte) {
             }
             // To put in the version, take the 7th byte and perform an and operation using 0x0f, 
             // followed by an or operation with 0x40. 
-            var seventhByte = bytes[6];
+            seventhByte = bytes[6];
             seventhByte.doAndOperation([0, 0, 0, 0, 1, 1, 1, 1]);
             seventhByte.doOrOperation([0, 1, 0, 0, 0, 0, 0, 0]);
             // To put in the variant, take the 9th byte and perform an and operation using 0x3f, 
             // followed by an or operation with 0x80.
-            var ninthByte = bytes[8];
+            ninthByte = bytes[8];
             ninthByte.doAndOperation([0, 0, 1, 1, 1, 1, 1, 1]);
             ninthByte.doOrOperation([1, 0, 0, 0, 0, 0, 0, 0]);
             // Create the uuid string
@@ -32,5 +32,5 @@ define(["Byte"], function (Byte) {
                 bytes[8].hexString + bytes[9].hexString + "-" + bytes[10].hexString + bytes[11].hexString +
                 bytes[12].hexString + bytes[13].hexString + bytes[14].hexString + bytes[15].hexString;
         }
-    }
+    };
 });
